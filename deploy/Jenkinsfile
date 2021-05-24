@@ -16,7 +16,7 @@ pipeline{
         }
       stage('SCM Checkout') {
          steps{
-            git branch: 'main', url: 'https://github.com/TheCountt/config-mgt-ansible.git'
+            git branch: 'main', url: 'https://github.com/TheCountt/Configuration-Ansible.git'
          }
        }
       stage('Prepare Ansible For Execution') {
