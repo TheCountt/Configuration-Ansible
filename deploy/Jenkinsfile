@@ -24,7 +24,7 @@ pipeline{
           sh 'echo ${WORKSPACE}'
         }
      }
-      stage('Execute Ansible') {
+      stage('Execute Ansible Playbook') {
         steps {
             ansiblePlaybook colorized: true, credentialsId: 'key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory/${inventory_file}', playbook: 'playbooks/site.yml'
         }
