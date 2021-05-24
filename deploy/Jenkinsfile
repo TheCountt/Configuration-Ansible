@@ -26,12 +26,12 @@ pipeline{
      }
       stage('Execute Ansible Playbook') {
         steps {
-            ansiblePlaybook colorized: true, credentialsId: 'key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory/${inventory_file}', playbook: 'playbooks/site.yml', tags: '${tag}'
+            ansiblePlaybook colorized: true, credentialsId: 'key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory/${inventory_file}', playbook: 'playbooks/site.yml', skippedTags: 'skipped' tags: 'run'
         }
       }
       stage('Clean Workspace after build'){
         steps{
-          cleanWs()
+          cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenNotBuilt: true, cleanWhenUnstable: true, deleteDirs: true)
         }
       }
    }
