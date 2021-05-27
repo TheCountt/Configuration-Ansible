@@ -29,7 +29,7 @@ pipeline{
             ansiblePlaybook colorized: true, credentialsId: 'key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory/${inventory_file}', playbook: 'playbooks/site.yml'
         }
       }
-      stage('Clean Workspace after build'){
+      stage('Clean Workspace after build') {
         steps{
           cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenNotBuilt: true, cleanWhenUnstable: true, deleteDirs: true)
         }
